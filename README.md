@@ -18,3 +18,6 @@ My side project
   
 * JPA
   
+## Authors
+
+ShinIl Heo
