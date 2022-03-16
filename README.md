@@ -21,3 +21,5 @@ My side project
 ## Authors
 
 ShinIl Heo
+
+[Email](shinilheo0205@gmail.com)
