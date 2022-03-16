@@ -3,18 +3,18 @@ My side project
 
 ## Skills
 ### Front
-  React Native (0.64.3)
+* React Native (0.64.3)
   
-  Expo (SDK 44)
+* Expo (SDK 44)
   
-  React Navigation (6.0.2)
+* React Navigation (6.0.2)
   
 ### Back
-  Java (1.8)
+* Java (1.8)
   
-  MongoDB
+* MongoDB
   
-  Spring boot
+* Spring boot
   
-  JPA
+* JPA
   
