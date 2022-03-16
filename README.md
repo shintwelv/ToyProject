@@ -7,6 +7,8 @@ My side project
   
   Expo (SDK 44)
   
+  React Navigation (6.0.2)
+  
 ### Back
   Java (1.8)
   
