@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Keyboard, Pressable, StyleSheet, Text, TextInput } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import PressableOpacity from '../components/PressableOpacity';
@@ -7,6 +8,9 @@ import { height, width } from '../constants/Layout';
 interface landingProps {}
 
 export default function Landing(props: landingProps) {
+  const [userName, setUserName] = useState('');
+  const [password, setPassword] = useState('');
+
   return (
     <SafeAreaView>
       <Pressable onPress={Keyboard.dismiss}>
@@ -34,6 +38,7 @@ export default function Landing(props: landingProps) {
               marginTop: 10,
             }}
             maxLength={10}
+            onChangeText={(text) => setUserName(text)}
           />
           <Text
             style={{
@@ -57,9 +62,10 @@ export default function Landing(props: landingProps) {
             }}
             maxLength={20}
             secureTextEntry={true}
+            onChangeText={(text) => setPassword(text)}
           />
           <View style={[styles.button, { marginTop: 10 }]}>
-            <PressableOpacity>
+            <PressableOpacity onPress={() => console.log(userName, password)}>
               <Text style={styles.buttonText}>SIGNIN</Text>
             </PressableOpacity>
           </View>
