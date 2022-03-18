@@ -3,43 +3,32 @@
  * https://reactnavigation.org/docs/getting-started
  *
  */
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import {
-  NavigationContainer,
-  DefaultTheme,
-  DarkTheme,
-} from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import * as React from "react";
-import { ColorSchemeName, Pressable } from "react-native";
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import * as React from 'react';
+import { ColorSchemeName } from 'react-native';
 
-import Colors from "../constants/Colors";
-import useColorScheme from "../hooks/useColorScheme";
-import ModalScreen from "../screens/ModalScreen";
-import NotFoundScreen from "../screens/NotFoundScreen";
-import TabFiveScreen from "../screens/TabFiveScreen";
-import TabFourScreen from "../screens/TabFourScreen";
-import TabOneScreen from "../screens/TabOneScreen";
-import TabThreeScreen from "../screens/TabThreeScreen";
-import TabTwoScreen from "../screens/TabTwoScreen";
-import {
-  RootStackParamList,
-  RootTabParamList,
-  RootTabScreenProps,
-} from "../types";
-import LinkingConfiguration from "./LinkingConfiguration";
+import Colors from '../constants/Colors';
+import useColorScheme from '../hooks/useColorScheme';
+import ModalScreen from '../screens/ModalScreen';
+import NotFoundScreen from '../screens/NotFoundScreen';
+import TabFiveScreen from '../screens/TabFiveScreen';
+import TabFourScreen from '../screens/TabFourScreen';
+import TabOneScreen from '../screens/TabOneScreen';
+import TabThreeScreen from '../screens/TabThreeScreen';
+import TabTwoScreen from '../screens/TabTwoScreen';
+import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
+import LinkingConfiguration from './LinkingConfiguration';
 
-import TabOneIcon from "../assets/images/svg/mail_tab.svg";
-import TabTwoIcon from "../assets/images/svg/sheet_tab.svg";
-import TabThreeIcon from "../assets/images/svg/apple_tab.svg";
-import TabFourIcon from "../assets/images/svg/android_tab.svg";
-import TabFiveIcon from "../assets/images/svg/human_tab.svg";
+import TabOneIcon from '../assets/images/svg/mail_tab.svg';
+import TabTwoIcon from '../assets/images/svg/sheet_tab.svg';
+import TabThreeIcon from '../assets/images/svg/apple_tab.svg';
+import TabFourIcon from '../assets/images/svg/android_tab.svg';
+import TabFiveIcon from '../assets/images/svg/human_tab.svg';
+import Landing from '../screens/Landing';
 
-export default function Navigation({
-  colorScheme,
-}: {
-  colorScheme: ColorSchemeName;
-}) {
+export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
     <NavigationContainer linking={LinkingConfiguration} theme={DefaultTheme}>
       <RootNavigator />
@@ -55,19 +44,18 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName='Landing'>
+      <Stack.Screen name='Root' component={BottomTabNavigator} options={{ headerShown: false }} />
       <Stack.Screen
-        name="Root"
-        component={BottomTabNavigator}
-        options={{ headerShown: false }}
+        name='Landing'
+        component={Landing}
+        options={{
+          headerShown: false,
+        }}
       />
-      <Stack.Screen
-        name="NotFound"
-        component={NotFoundScreen}
-        options={{ title: "Oops!" }}
-      />
-      <Stack.Group screenOptions={{ presentation: "modal" }}>
-        <Stack.Screen name="Modal" component={ModalScreen} />
+      <Stack.Screen name='NotFound' component={NotFoundScreen} options={{ title: 'Oops!' }} />
+      <Stack.Group screenOptions={{ presentation: 'modal' }}>
+        <Stack.Screen name='Modal' component={ModalScreen} />
       </Stack.Group>
     </Stack.Navigator>
   );
@@ -87,57 +75,57 @@ function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
+      initialRouteName='TabOne'
       screenOptions={{
-        tabBarActiveTintColor: "#c7a55f",
+        tabBarActiveTintColor: '#c7a55f',
         tabBarShowLabel: false,
       }}
     >
       <BottomTab.Screen
-        name="TabOne"
+        name='TabOne'
         component={TabOneScreen}
-        options={({ navigation }: RootTabScreenProps<"TabOne">) => ({
-          title: "Tab One",
+        options={({ navigation }: RootTabScreenProps<'TabOne'>) => ({
+          title: 'Tab One',
           tabBarIcon: ({ color, focused }) => (
             <TabOneIcon width={24} height={24} fill={tabIconColor(focused)} />
           ),
         })}
       />
       <BottomTab.Screen
-        name="TabTwo"
+        name='TabTwo'
         component={TabTwoScreen}
         options={{
-          title: "Tab Two",
+          title: 'Tab Two',
           tabBarIcon: ({ color, focused }) => (
             <TabTwoIcon width={24} height={24} fill={tabIconColor(focused)} />
           ),
         }}
       />
       <BottomTab.Screen
-        name="TabThree"
+        name='TabThree'
         component={TabThreeScreen}
         options={{
-          title: "Tab Three",
+          title: 'Tab Three',
           tabBarIcon: ({ color, focused }) => (
             <TabThreeIcon width={24} height={24} fill={tabIconColor(focused)} />
           ),
         }}
       />
       <BottomTab.Screen
-        name="TabFour"
+        name='TabFour'
         component={TabFourScreen}
         options={{
-          title: "Tab Four",
+          title: 'Tab Four',
           tabBarIcon: ({ color, focused }) => (
             <TabFourIcon width={24} height={24} fill={tabIconColor(focused)} />
           ),
         }}
       />
       <BottomTab.Screen
-        name="TabFive"
+        name='TabFive'
         component={TabFiveScreen}
         options={{
-          title: "Tab Five",
+          title: 'Tab Five',
           tabBarIcon: ({ color, focused }) => (
             <TabFiveIcon width={24} height={24} fill={tabIconColor(focused)} />
           ),
