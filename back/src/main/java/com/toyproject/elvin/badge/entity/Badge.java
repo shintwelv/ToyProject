@@ -19,5 +19,6 @@ public class Badge extends BaseEntity{
 	private String name;
 	private ProcessState state;
 	private User user;
+	private String rejectReason;
 	
 }

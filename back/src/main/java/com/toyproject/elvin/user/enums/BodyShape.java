@@ -15,4 +15,14 @@ public enum BodyShape {
 		this.krName= krName;
 	}
 	
+	public static BodyShape findValue(String krName) {
+		BodyShape[] values = BodyShape.values();
+		for (BodyShape bodyShape : values) {
+			if (bodyShape.getKrName().equals(krName)) {
+				return bodyShape;
+			}
+		}
+		return null;
+	}
+	
 }

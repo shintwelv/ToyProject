@@ -15,7 +15,16 @@ public enum Religion {
 	private String krName;
 	
 	Religion(String krName) {
-		// TODO Auto-generated constructor stub
 		this.krName = krName;
+	}
+
+	public static Religion findValue(String krname) {
+		Religion[] values = Religion.values();
+		for (Religion religion : values) {
+			if (religion.getKrName().equals(krname)) {
+				return religion;
+			}
+		}
+		return null;
 	}
 }
